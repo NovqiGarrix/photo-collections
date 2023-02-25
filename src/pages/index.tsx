@@ -63,6 +63,7 @@ const Home: NextPage<IHomeProps> = (props) => {
           <Link
             href="https://www.pexels.com/"
             target="_blank"
+            passHref
             rel="noopener noreferrer"
             className="underline hover:font-medium"
           >
@@ -84,8 +85,12 @@ const Home: NextPage<IHomeProps> = (props) => {
           }}
         >
           <div className="grid h-full grid-cols-3 items-center gap-7">
-            {photos.photos.map((photo) => (
-              <div key={photo.id} className="w-full">
+            {photos.photos.map((photo, index) => (
+              <Link
+                href={`/${photo.id}`}
+                key={photo.id + index}
+                className="w-full"
+              >
                 <Image
                   src={photo.src.medium}
                   width={photo.width}
@@ -93,7 +98,7 @@ const Home: NextPage<IHomeProps> = (props) => {
                   alt={photo.alt}
                   loading="lazy"
                 />
-              </div>
+              </Link>
             ))}
           </div>
         </InfiniteScroll>
