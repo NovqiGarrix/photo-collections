@@ -90,6 +90,7 @@ const Home: NextPage<IHomeProps> = (props) => {
                 href={`/${photo.id}`}
                 key={photo.id + index}
                 className="w-full"
+                passHref
               >
                 <Image
                   src={photo.src.medium}
